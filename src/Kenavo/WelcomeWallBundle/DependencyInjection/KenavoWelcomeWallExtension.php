@@ -23,6 +23,12 @@ class KenavoWelcomeWallExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-        $loader->load('services.xml');
+        $toLoad = array('map.xml', 'post.xml');
+        
+        foreach ($toLoad as $file) {
+            $loader->load($file);
+        }
+        
+        $container->setParameter('kenavo_welcomewall.post_keepalive_days', $config['post_keepalive_days']);
     }
 }

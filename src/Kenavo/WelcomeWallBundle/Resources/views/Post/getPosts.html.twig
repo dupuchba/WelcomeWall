@@ -1,0 +1,11 @@
+{% extends 'VichSf2TweetsBundle::layout.html.twig' %}
+
+{% block content %}
+    <div class="sidebar">
+        <div class="sidebar-inner">
+            {% for post in posts %}
+                {% include 'KenavoWelcomeWallBundle:Post:post.html.twig' with { 'post' : post } %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}
