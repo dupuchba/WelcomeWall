@@ -1,46 +1,30 @@
-<!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="description" content="welcome wall of your friends around the globe">
-        <meta name="author" content="baptiste dupuch">
-
-        <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-        <!--[if lt IE 9]>
-          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-        <title>{% block title %}Welcome!{% endblock %}</title>
-          
+        <meta name="author" content="Baptiste DUPUCH">
+        <title>{% block title %}{% endblock title %}</title>
         {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('bundles/kenavowelcomewall/css/bootstrap.min.css') }}" type="text/css" media="all" />
         <link rel="stylesheet" href="{{ asset('bundles/kenavowelcomewall/css/bootstrap-responsive.min.css') }}" type="text/css" media="all" />
-
-        {% endblock %}
+        {% endblock stylesheets %}
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+        <link href="{{ asset('bundles/kenavowelcomewall/css/site.css') }}" rel="stylesheet" type="text/css" media="screen" />
+        {{ vichgeo_include_js() }}
     </head>
-
-
     <body>
-
-        <div class="container-fluid">
-            
-            <div class="row-fluid">
-                <div class="span2">
-                <!--Sidebar content-->
-                Test
-                </div>
-
-                <div class="span10">
-                <!--Body content-->
-                {% block body %}{% endblock %}
-                </div>
-            </div>
-        </div>
-
         
-        {% block javascripts %}
-        <script src="{{ asset('bundles/kenavowelcomewall/js/bootstrap.min.js') }}"></script>
 
-        {% endblock %}
+    <div class="map">
+        <div class="map-inner">
+            {{ vichgeo_map('pre_configured') }}
+        </div>
+    </div>
+    {% block body %}{% endblock body %}
+        {% block javascripts %}
+            <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+            <![endif]-->
+        <script src="{{ asset('bundles/kenavowelcomewall/js/bootstrap.min.js') }}"></script>    
+        {% endblock javascripts %}
     </body>
 </html>

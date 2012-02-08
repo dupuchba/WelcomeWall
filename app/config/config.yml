@@ -1,6 +1,7 @@
 imports:
     - { resource: parameters.ini }
     - { resource: security.yml }
+    - { resource: "@KenavoWelcomeWallBundle/Resources/config/map.xml" }
 
 framework:
     #esi:             ~
