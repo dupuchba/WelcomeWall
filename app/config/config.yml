@@ -63,3 +63,6 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: Kenavo\WelcomeWallBundle\Entity\User
+
+vich_geographical:
+    db_driver: orm

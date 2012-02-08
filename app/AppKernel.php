@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Kenavo\WelcomeWallBundle\KenavoWelcomeWallBundle(),
+            new Vich\GeographicalBundle\VichGeographicalBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

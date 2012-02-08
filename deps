@@ -65,3 +65,7 @@
 [FOSUserBundle]
     git=git://github.com/FriendsOfSymfony/FOSUserBundle.git
     target=bundles/FOS/UserBundle
+
+[VichGeographicalBundle]
+    git=git://github.com/dustin10/VichGeographicalBundle.git
+    target=/bundles/Vich/GeographicalBundle
