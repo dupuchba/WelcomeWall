@@ -20,6 +20,8 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new Kenavo\WelcomeWallBundle\KenavoWelcomeWallBundle(),
             new Vich\GeographicalBundle\VichGeographicalBundle(),
+            new Knp\Bundle\ConsoleAutocompleteBundle\KnpConsoleAutocompleteBundle(),
+
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

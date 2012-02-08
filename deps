@@ -73,3 +73,7 @@
 [JMSDebuggingBundle]
     git=https://github.com/schmittjoh/JMSDebuggingBundle.git
     target=/bundles/JMS/DebuggingBundle
+
+[KnpConsoleAutocompleteBundle]
+    git=https://github.com/KnpLabs/KnpConsoleAutocompleteBundle.git
+    target=/bundles/Knp/Bundle/ConsoleAutocompleteBundle
