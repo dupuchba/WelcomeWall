@@ -69,3 +69,7 @@
 [VichGeographicalBundle]
     git=git://github.com/dustin10/VichGeographicalBundle.git
     target=/bundles/Vich/GeographicalBundle
+
+[JMSDebuggingBundle]
+    git=https://github.com/schmittjoh/JMSDebuggingBundle.git
+    target=/bundles/JMS/DebuggingBundle
