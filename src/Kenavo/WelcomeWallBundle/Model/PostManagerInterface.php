@@ -38,5 +38,5 @@ interface PostManagerInterface
 * @param Post $post The post.
 * @param boolean $andFlush True if the EntityManager should be flushed.
 */
-    function updateTweet(Tweet $tweet, $andFlush = true);
+   // function updatePost(Post $post, $andFlush = true);
 }

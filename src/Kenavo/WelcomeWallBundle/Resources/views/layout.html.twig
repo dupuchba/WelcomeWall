@@ -9,7 +9,7 @@
 {% endblock stylesheets %}
   
 {% block body %}
-   test
+{% block content%}{% endblock %}
     <div class="topbar">
         <div class="topbar-inner">
             <div class="container-fluid">
@@ -17,10 +17,8 @@
             </div>
         </div>
     </div>
-
-
 {% endblock body %}
-    
+
 {% block javascripts %}
     {{ parent() }}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>

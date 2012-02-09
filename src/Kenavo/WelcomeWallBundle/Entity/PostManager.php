@@ -2,8 +2,8 @@
 
 namespace Kenavo\WelcomeWallBundle\Entity;
 
-use Kenavo\WelcomeWallBundle\Entity\PostManagerInterface;
-use Kenavo\WelcomeWallBundle\Entity\Tweet;
+use Kenavo\WelcomeWallBundle\Model\PostManagerInterface;
+use Kenavo\WelcomeWallBundle\Entity\Post;
 use Doctrine\ORM\EntityManager;
 
 /**
@@ -91,11 +91,11 @@ class PostManager implements PostManagerInterface
     /**
 * {@inheritDoc}
 */
-    public function updatePost(Post $post, $andFlush = true)
-    {
-        $this->em->persist($post);
-        if ($andFlush) {
-            $this->em->flush();
-        }
-    }
+ //   public function updatePost(Post $post, $andFlush = true)
+   // {
+     //   $this->em->persist($post);
+       // if ($andFlush) {
+         //   $this->em->flush();
+    //    }
+    //}
 }

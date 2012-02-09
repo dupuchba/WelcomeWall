@@ -1,4 +1,5 @@
 <?php
+// src/Acme/UserBundle/Entity/User.php
 
 namespace Kenavo\WelcomeWallBundle\Entity;
 
@@ -21,5 +22,6 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
+        // your own logic
     }
 }

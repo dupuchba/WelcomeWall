@@ -3,45 +3,80 @@
 namespace Kenavo\WelcomeWallBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Vich\GeographicalBundle\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Kenavo\WelcomeWallBundle\Entity\Post
- *
- * @ORM\Table()
- * @ORM\Entity
- */
+* .
+*
+* @author Baptiste DUPUCH <baptiste.dupuch@gmail.com>
+*
+* @ORM\Entity
+* @ORM\Table(name="post")
+* @Vich\Geographical
+*/
 class Post
 {
     /**
-     * @var integer $id
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
+* @ORM\Id
+* @ORM\Column(type="integer")
+* @ORM\GeneratedValue(strategy="AUTO")
+*
+* @var integer $id
+*/
+    protected $id;
 
+    
     /**
-     * @var string $message
-     *
-     * @ORM\Column(name="message", type="string", length=255)
-     */
-    private $message;
-
+* @ORM\Column(type="text")
+*
+* @Assert\NotBlank(message="The message is required.", groups={"CreatePost"})
+*
+* @var string $message
+*/
+    protected $message;
+    
+      
     /**
-     * @var datetime $createdAt
-     *
-     * @ORM\Column(name="createdAt", type="datetime")
-     */
-    private $createdAt;
-
+* @ORM\Column(type="decimal", scale="7")
+*
+* @var double $latitude
+*/
+    protected $latitude;
+    
     /**
-     * @var datetime $updatedAt
-     *
-     * @ORM\Column(name="updatedAt", type="datetime")
-     */
-    private $updatedAt;
-
+* @ORM\Column(type="decimal", scale="7")
+*
+* @var double $longitude
+*/
+    protected $longitude;
+    
+    /**
+* @ORM\Column(type="datetime", name="created_at")
+*
+* @var \DateTime $createdAt
+*/
+    protected $createdAt;
+    
+ 
+    
+    /**
+* Constructs a new instance of Tweet.
+*/
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+    }
+    
+    /**
+* Returns a string representation of the object.
+*
+* @return string The string representation.
+*/
+    public function __toString()
+    {
+        return $this->getMessage();
+    }
 
     /**
      * Get id
@@ -56,7 +91,7 @@ class Post
     /**
      * Set message
      *
-     * @param string $message
+     * @param text $message
      */
     public function setMessage($message)
     {
@@ -66,11 +101,51 @@ class Post
     /**
      * Get message
      *
-     * @return string 
+     * @return text 
      */
     public function getMessage()
     {
         return $this->message;
+    }
+
+    /**
+     * Set latitude
+     *
+     * @param decimal $latitude
+     */
+    public function setLatitude($latitude)
+    {
+        $this->latitude = $latitude;
+    }
+
+    /**
+     * Get latitude
+     *
+     * @return decimal 
+     */
+    public function getLatitude()
+    {
+        return $this->latitude;
+    }
+
+    /**
+     * Set longitude
+     *
+     * @param decimal $longitude
+     */
+    public function setLongitude($longitude)
+    {
+        $this->longitude = $longitude;
+    }
+
+    /**
+     * Get longitude
+     *
+     * @return decimal 
+     */
+    public function getLongitude()
+    {
+        return $this->longitude;
     }
 
     /**
@@ -94,22 +169,16 @@ class Post
     }
 
     /**
-     * Set updatedAt
+     * @Vich\GeographicalQuery
      *
-     * @param datetime $updatedAt
+     * This method builds the full address to query for coordinates.
      */
-    public function setUpdatedAt($updatedAt)
+    public function getAddress()
     {
-        $this->updatedAt = $updatedAt;
-    }
-
-    /**
-     * Get updatedAt
-     *
-     * @return datetime 
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
+        return sprintf(
+            '%s, %s',
+            $this->latitude,
+            $this->longitude
+        );
     }
 }
