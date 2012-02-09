@@ -5,6 +5,7 @@ namespace Kenavo\WelcomeWallBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Vich\GeographicalBundle\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
 * .
@@ -17,6 +18,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 */
 class Post
 {
+
+/**
+ * @ORM\OneToMany(targetEntity="Comment", mappedBy="post")
+ */
+    protected $comments;
+
     /**
 * @ORM\Id
 * @ORM\Column(type="integer")
@@ -66,6 +73,7 @@ class Post
     public function __construct()
     {
         $this->createdAt = new \DateTime();
+        $this->comments = new ArrayCollection();
     }
     
     /**
@@ -180,5 +188,25 @@ class Post
             $this->latitude,
             $this->longitude
         );
+    }
+
+    /**
+     * Add comments
+     *
+     * @param Kenavo\WelcomeWallBundle\Entity\Comment $comments
+     */
+    public function addComment(\Kenavo\WelcomeWallBundle\Entity\Comment $comments)
+    {
+        $this->comments[] = $comments;
+    }
+
+    /**
+     * Get comments
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getComments()
+    {
+        return $this->comments;
     }
 }

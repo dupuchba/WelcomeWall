@@ -8,7 +8,7 @@
 
         <service id="kenavo_welcomewall.map.pre_configured" class="Kenavo\WelcomeWallBundle\Map\WelcomeWallMap">
             <tag name="vichgeo.map" alias="pre_configured" />
-            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="kenavo_welcomewall.post_manager" />
         </service>
 
     </services>
